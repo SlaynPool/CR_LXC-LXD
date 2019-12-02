@@ -1,0 +1,10 @@
+top - 17:35:13 up 34 min,  2 users,  load average: 0,56, 0,41, 0,56
+Tasks:  86 total,   4 running,  82 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 28,3 us, 70,9 sy,  0,0 ni,  0,0 id,  0,0 wa,  0,0 hi,  0,8 si,  0,0 st
+MiB Mem :    987,3 total,    144,6 free,     99,5 used,    743,3 buff/cache
+MiB Swap:    488,0 total,    481,2 free,      6,8 used.    721,4 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                                                                  
+25672 root      20   0    5272    752    688 R  79,8   0,1   0:31.67 md5sum                                                                                                                   
+25676 root      20   0    5272    688    624 R  19,9   0,1   0:02.67 md5sum                                                                                                                   
+    1 root      20   0  105164  10112   7500 S   0,0   1,0   0:03.00 systemd         

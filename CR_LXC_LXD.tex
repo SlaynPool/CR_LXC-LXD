@@ -100,8 +100,21 @@ Le fichier relatif aux reseaux est /etc/default/lxc-net :
 Vu du Container, cela ressemble a ceci : 
 \insertcode{commande/9.txt}{Configuration Réseau  }
 
-\subsection{Où sont stocker les containers ?  }
+\section{Création des CGROUPS }
 
+\subsection{Les xterm consomateurs }
+\insertcode{commande/10.txt}{top}
+On peut voir que les deux processus prennent 50 \%  du CPU de la vm environ.
+
+Pour limiter l'utilisation de ou augmenter l'utilisation du CPU, on peut utiliser les cgroupes comme ceci 
+\insertcode{commande/11.txt}{Cgroupe set}
+Pour utiliser cgexec,  il faut etre root, et comme root ne peut utiliser de session graphique en temps normal, il faut modifier etc/pam.d/su et /etc/pam.d/su-l en rajoutant ``latex veut pas''  pour que ca fonctionne.
+%session optional pam_xauth.so
+
+
+On
+
+\insertcode{commande/12.txt}{top}
 
 
 \end{document}

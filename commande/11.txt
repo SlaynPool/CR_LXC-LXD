@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+cgcreate -g cpu,cpuset:/quatrevingtpourcentcpu
+cgcreate -g cpu,cpuset:/vingtpourcent
+cpucgset -r cpu.shares=2 vingtpourcent
+cpucgset -r cpu.shares=8 quatrevingtpourcent
+cpucgget -r cpu.shares quatrevingtpourcent
+cpucgget -r cpu.shares vingtpourcent
+cpucgexec -g cpu:/quatrevingtpourcentcpu 
+xterm -bg orange -e "md5sum /dev/urandom"  &
+cgexec -g cpu:/vingtpourcentcpu xterm -bg blue -e "md5sum /dev/urandom"  &
+top -d2
