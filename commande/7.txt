@@ -1,0 +1,56 @@
+# Pour limiter l'utilisation Memoire d'un Container
+# Dans /var/lib/lxc/$CONTAINER/config
+lxc.cgroup.memory.limit_in_bytes = 512M
+
+# Pour limiter le Swap du container
+memory.memsw.limit_in_bytes= 1G
+
+# Pour verifier, on peut utiliser la commande stress dans le container, et verifier que l'on ne peut allouer plus de 512M
+stress --vm 1 --vm-bytes 600M
+
+ 
+# Installer apache2 
+root@ubuntu:~# lxc-attach  debian-j1 
+root@debian-j1:~# apt install apache2
+Lecture des listes de paquets... Fait
+...
+# Faire un autostart
+vim /var/lib/lxc/$CONTAINER/config
+lxc.start.auto = 1
+
+
+# Figer, relancez le container
+root@ubuntu:~# lxc-freeze debian-j1 
+root@ubuntu:~# lxc-info debian-j1
+Name:           debian-j1
+State:          FROZEN
+PID:            1105
+IP:             10.0.3.212
+CPU use:        0.77 seconds
+BlkIO use:      21.57 MiB
+Memory use:     48.55 MiB
+KMem use:       4.82 MiB
+Link:           vethG27FGY
+ TX bytes:      2.10 KiB
+ RX bytes:      16.55 KiB
+ Total bytes:   18.64 KiB
+root@ubuntu:~# lxc-unfreeze debian-j1 
+root@ubuntu:~# lxc-info debian-j1
+Name:           debian-j1
+State:          RUNNING
+PID:            1105
+IP:             10.0.3.212
+CPU use:        0.77 seconds
+BlkIO use:      21.57 MiB
+Memory use:     48.55 MiB
+KMem use:       4.82 MiB
+Link:           vethG27FGY
+ TX bytes:      2.10 KiB
+ RX bytes:      16.88 KiB
+ Total bytes:   18.98 KiB
+
+# Cloner un container
+Il faut que la machine soit stoper puis 
+
+$: lxc-copy -n debian-j1 -N clonedebian
+

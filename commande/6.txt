@@ -5,4 +5,55 @@ centos    debian-j1 debian-j2
 # Demarrer un containers
 $ lxc-start debian-j1
 
-# Stopper Un
+# Stopper Un containers 
+lxc-stop debian-j1
+
+# Redemarrer en mode Deamon
+
+lxc-start -d debian-J1
+
+# S'attacher a ce container
+
+root@ubuntu:~# lxc-attach debian-j1
+root@debian-j1:~# ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+9: eth0@if10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:16:3e:aa:9b:c3 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.0.3.212/24 brd 10.0.3.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::216:3eff:feaa:9bc3/64 scope link 
+       valid_lft forever preferred_lft forever
+root@debian-j1:~# 
+
+
+# Voir le PID du Container et les processus fils
+
+root@ubuntu:~# lxc-info debian-j1
+Name:           debian-j1
+State:          RUNNING
+PID:            6196
+IP:             10.0.3.212
+CPU use:        0.25 seconds
+BlkIO use:      2.02 MiB
+Memory use:     15.79 MiB
+KMem use:       2.16 MiB
+Link:           veth23209A
+ TX bytes:      1.55 KiB
+ RX bytes:      1.86 KiB
+ Total bytes:   3.42 KiB
+
+root@ubuntu:~# ps -ejH 6196
+
+ 6192  6192  6192 ?        Ss     0:00   [lxc monitor] /var/lib/lxc debian-j1
+ 6196  6196  6196 ?        Ss     0:00     /sbin/init
+ 6252  6252  6252 ?        Ss     0:00       /lib/systemd/systemd-journald
+ 6295  6295  6295 ?        Ss     0:00       /sbin/dhclient -4 -v -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases -I -df /var/lib/dhcp/dhclient6.eth0.leases eth0
+ 6331  6331  6331 pts/3    Ss+    0:00       /sbin/agetty --noclear --keep-baud console 115200,38400,9600 vt220
+ 6332  6332  6332 ?        Ss     0:00       /usr/sbin/sshd -D
+
+
