@@ -1,9 +1,9 @@
-
 \documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{hyperref}
+\usepackage{graphicx}
 %opening
 \title{Le Protocole MQTT}
 \author{Nicolas Vadkerti}
@@ -49,7 +49,7 @@ tabsize=2
 \maketitle
 
 
-\url{https://github.com/SlaynPool/CR_LXC-LXD/}
+\url{https://github.com/SlaynPool/CR\_LXC-LXD/}
 
 \section {Container LXC sosu Linux}
 \subsection{Installation de LXC}
@@ -82,9 +82,27 @@ Pour installer LXC, on doit suivre le TP, càd :
 \insertcode{commande/6.txt}{Les commandes utiles }
 
 \insertcode{commande/7.txt}{Les commandes utiles}
+
+
+\newpage
 \subsection{Comment le container est-il connecté au réseau ? }
 Le container est relié au reseau grâce à un Bridge Virtuel.
 On se rend compte grâce à la commande ip a que lxc monte des interfaces réseaux virtuels 
+  \begin{figure}[h!]
+\centering
+\includegraphics[scale=0.50]{screen/1.jpg}
+\caption{Network Schema}
+\label{fig:net }
+\end{figure}
+Le fichier relatif aux reseaux est /etc/default/lxc-net :
+\insertcode{commande/8.txt}{lxc-net default}
+
+Vu du Container, cela ressemble a ceci : 
+\insertcode{commande/9.txt}{Configuration Réseau  }
+
+\subsection{Où sont stocker les containers ?  }
+
+
 
 \end{document}
 
