@@ -51,11 +51,31 @@ tabsize=2
 
 \url{https://github.com/SlaynPool/CR_LXC-LXD/}
 
+\section {Container LXC sosu Linux}
+\subsection{Installation de LXC}
+Pour installer LXC, on doit suivre le TP, càd :
+\insertcode{commande/1.txt}{Installation de LXC}
 
+ Pour vérifier que l'installation fonctionne coorectement on peut utiliser les commandes lxc-...
+ \insertcode{commande/2.txt}{Verification de LXC}
+ Il ne semble pas avoir de soucis, ce qui est plutot bon signe pour la suite du TP 
 
+ Si l'on regarde dans /usr/share/lxc/templates/ on peut voir toutes les distributions que l'on va pouvoir contenariser:
+ \insertcode{commande/3.txt}{listes des distributions contenarisables}
  
  
+ \subsection{Création d’un container LXC Debian stretch.}
  
+ 
+ Pour cela, il faut :
+ \insertcode{commande/4.txt}{premier container}
+ Comme on peux le voir, nous venons de lancer notre premier container via lxc.
+ 
+ Si l'on recreer un nouveau container avec un nom different, la vitesse est bien plus rapide. En effet, il ne retelecharge pas toutes l'image, mais copie simplement la précédente. Le cache est ici : \url{var/cache/lxc/debian/rootfs-stretch-amd64}
+ 
+ 
+ Pour déployer d'autre distributions comme centos on peut aussi utiliser LXC
+ \insertcode{commande/5.txt}{LXC centos}
  
 
 

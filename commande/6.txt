@@ -1,0 +1,8 @@
+# Lister les containers
+$ lxc-ls
+centos    debian-j1 debian-j2 
+
+# Demarrer un containers
+$ lxc-start debian-j1
+
+# Stopper Un

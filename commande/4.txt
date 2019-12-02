@@ -1,0 +1,28 @@
+root@ubuntu:~# lxc-create -t debian -n debian-j1 -- -r stretch -a amd64
+ebootstrap is /usr/sbin/debootstrap
+Checking cache download in /var/cache/lxc/debian/rootfs-stretch-amd64 ... 
+gpg: key 7638D0442B90D010: 4 signatures not checked due to missing keys
+gpg: key 7638D0442B90D010: "Debian Archive Automatic Signing Key (8/jessie) <ftpmaster@debian.org>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+Downloading debian minimal ...
+I: Retrieving InRelease 
+I: Retrieving Release 
+...
+
+root@ubuntu:~# lxc-info debian-j1
+Name:           debian-j1
+State:          STOPPED
+root@ubuntu:~# lxc-start debian-j1
+root@ubuntu:~# lxc-info debian-j1
+Name:           debian-j1
+State:          RUNNING
+PID:            19922
+CPU use:        0.12 seconds
+BlkIO use:      132.00 KiB
+Memory use:     13.07 MiB
+KMem use:       2.03 MiB
+Link:           veth19GBKG
+ TX bytes:      858 bytes
+ RX bytes:      780 bytes
+

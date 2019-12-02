@@ -1,0 +1,12 @@
+root@ubuntu:~# ls  /usr/share/lxc/templates/
+lxc-alpine     lxc-fedora-legacy  lxc-sabayon
+lxc-altlinux   lxc-gentoo	  lxc-slackware
+lxc-archlinux  lxc-local	  lxc-sparclinux
+lxc-busybox    lxc-oci		  lxc-sshd
+lxc-centos     lxc-openmandriva   lxc-ubuntu
+lxc-cirros     lxc-opensuse	  lxc-ubuntu-cloud
+lxc-debian     lxc-oracle	  lxc-voidlinux
+lxc-download   lxc-plamo
+lxc-fedora     lxc-pld
+
+

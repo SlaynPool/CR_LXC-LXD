@@ -1,0 +1,3 @@
+apt-get purge lxd
+apt-get install lxc  lxc-templates lxc-utils bridge-utils debootstrap yum libvirt0 libpam-cgfs
+
